@@ -34,7 +34,8 @@ const COLORS = [
 
 
 
-function Example() {
+function Example({ allPostsData }:any) {
+  console.log("allPostsData", allPostsData)
   /**
    * useMyPresence returns the presence of the current user and a function to update it.
    * updateMyPresence is different than the setState function returned by the useState hook from React.
@@ -47,7 +48,7 @@ function Example() {
    * Return all the other users in the room and their presence (a cursor position in this case)
    */
   const others = useOthers();
-  const allPostsData = getSortedPostsData();
+  //const allPostsData = getSortedPostsData();
 
   return (
 
@@ -102,7 +103,7 @@ function Example() {
   );
 }
 
-export default function Page() {
+export default function Page({ allPostsData }: any) {
   const roomId = useOverrideRoomId("nextjs-live-cursors");
 
   return (
@@ -115,9 +116,8 @@ export default function Page() {
         cursor: null,
       }}
     >
-      <Example />
+      <Example allPostsData = {allPostsData} />
       <Home allPostsData = {{}}  />
-
     </RoomProvider>
   );
 }
