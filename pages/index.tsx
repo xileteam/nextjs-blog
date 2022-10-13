@@ -72,6 +72,7 @@ function Example({ allPostsData }:any) {
       }
     >
 
+<Home allPostsData = {allPostsData}  />
 
       {
         /**
@@ -117,7 +118,6 @@ export default function Page({ allPostsData }: any) {
       }}
     >
       <Example allPostsData = {allPostsData} />
-      <Home allPostsData = {{}}  />
     </RoomProvider>
   );
 }
