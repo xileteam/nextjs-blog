@@ -7,16 +7,22 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date'; 
+import { getDocumentBySlug, getDocuments } from 'outstatic/server';
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+export const getStaticProps = async () => {
+  const allPostsData = getDocuments('posts', [
+    'title',
+    'publishedAt',
+    'slug',
+    'coverImage',
+    'description',
+    'author'
+  ])
+
   return {
-    props: {
-      allPostsData,
-    },
-  };
+    props: { allPostsData }
+  }
 }
-
 /**
  * This file shows how to add basic live cursors on your product.
  */
