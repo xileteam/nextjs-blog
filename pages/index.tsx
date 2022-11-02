@@ -7,6 +7,7 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date'; 
+import Header from "../components/Header";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -71,7 +72,7 @@ function Example({ allPostsData }:any) {
         })
       }
     >
-
+<Header />
 <Home allPostsData = {allPostsData}  />
 
       {

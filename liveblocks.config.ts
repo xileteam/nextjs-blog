@@ -1,9 +1,12 @@
 import { createClient } from "@liveblocks/client";
 import { createRoomContext } from "@liveblocks/react";
 
+let PUBLIC_KEY = "pk_live_KDggEGhJ8dipd4gOoA8PVStV"
+
 const client = createClient({
-  publicApiKey: process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!,
+  publicApiKey: PUBLIC_KEY,
 });
+
 
 // Presence represents the properties that will exist on every User in the Room
 // and that will automatically be kept in sync. Accessible through the
@@ -33,7 +36,9 @@ type Storage = {
 // room. Must be JSON-serializable.
 // type RoomEvent = {};
 
-export const { RoomProvider, useOthers, useMyPresence } = createRoomContext<
+export const { RoomProvider, useOthers, useMyPresence, useUpdateMyPresence,
+  useOthersMapped,
+  useOthersConnectionIds, } = createRoomContext<
   Presence,
   Storage /* UserMeta, RoomEvent */
 >(client);
